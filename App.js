@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { DataStore } from '@aws-amplify/datastore';
-import { UIDS } from './models';
+import { UIDS } from './src/models';
 
 import { AsyncStorage } from '@aws-amplify/core';
 
