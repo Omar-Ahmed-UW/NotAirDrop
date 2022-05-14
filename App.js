@@ -1,37 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { DataStore } from '@aws-amplify/datastore';
-import { UIDS } from './src/models';
-
 import { AsyncStorage } from '@aws-amplify/core';
 
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
-import { useEffect } from 'react/cjs/react.production.min';
 Amplify.configure(awsconfig);
+
+import { API, graphqlOperation } from 'aws-amplify';
+import { createUIDS, updateUIDS, deleteUIDS } from './src/graphql/mutations';
+import { listUIDS } from './graphql/queries';
+
+import React, {useEffect} from 'react';
 
 export default function App() {
 
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-// only runs on first launch
-useEffect(() => {
+  // only runs on first launch
+  useEffect(() => {
   // checks for a localUID
   const fetchUID = async () => {
     if(!AsyncStorage.getItem('localUID')) {
@@ -55,6 +40,25 @@ useEffect(() => {
       alert(err)
     }
   }
+  console.log("Mounted");
   fetchUID();
   console.log(AsyncStorage.getItem('localUID'));
 }, [])
+
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
