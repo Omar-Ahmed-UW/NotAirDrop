@@ -1,11 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+import { RNS3 } from 'react-native-aws3';
 
 export default function App() {
+  takePic();{
+    ImagePicker.showImagePicker({}, (response)=>{
+      console.log(response);
+    })
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>welcome to aws s3 uploader</Text>
       <StatusBar style="auto" />
+      <TouchableOpacity onPress={this.takePic.bind(this)}>
+        <Text>Upload Image</Text>
+      </TouchableOpacity>
     </View>
   );
 }

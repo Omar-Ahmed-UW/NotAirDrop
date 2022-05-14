@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notairdrop-dev-120642-authRole",
+      "UnauthRoleArn": "arn:aws:iam::086887148914:role/amplify-notairdrop-dev-120642-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::086887148914:role/amplify-notairdrop-dev-120642-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-notairdrop-dev-120642-deployment",
+      "UnauthRoleName": "amplify-notairdrop-dev-120642-unauthRole",
+      "StackName": "amplify-notairdrop-dev-120642",
+      "StackId": "arn:aws:cloudformation:us-west-1:086887148914:stack/amplify-notairdrop-dev-120642/d3fde010-d2ef-11ec-81f7-02c50cf314e7",
+      "AmplifyAppId": "d1arly58czjjs"
+    },
+    "categories": {
+      "auth": {
+        "notairdrop30cc754c": {},
+        "true": {}
+      }
+    }
+  }
+}
