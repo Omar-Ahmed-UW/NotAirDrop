@@ -1,7 +1,7 @@
 # NotAirDrop
 
 ## Inspiration
-Based on the hackathon’s themes, we decicded to make a web application that also works on mobile devices to 
+We were inspired by the problems of sharing files, photos, and videos between friends, and other people. Oftentimes we are limited by upload size, and the time it takes to transfer files 
 ## What it does
 
 ## How we built it
