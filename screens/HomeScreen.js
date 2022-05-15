@@ -4,8 +4,8 @@ import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pre
 
 export default function HomeScreen({ navigation }) {
   return (
-    /*<Image source={require('./my-icon.png')} /> */
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Image source={require('../images/NotAirDropLogo.png')} style={styles.backgroundImage}/> 
       <View>
         <Pressable style={styles.button} onPress={() => navigation.navigate('Details')}>
           <Text style={styles.buttonText}>Send File</Text>
@@ -52,5 +52,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+  backgroundImage:{
+    opacity: 0.08,
+    position: 'absolute',
+    top: '20%',
+    height: 300,
+    width: 300,
   },
 });
