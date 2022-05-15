@@ -40,6 +40,11 @@ export default function FileUploadScreen({ route, navigation }) {
     );
   }
 */
+  function setSentFile( fromUID, toUID, fileURL) {
+    const sentFile = { fromUID: fromUID, toUID: toUID, fileURL: fileURL };
+    API.graphql(graphqlOperation(create, {input: sentFile}));
+  }
+
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>

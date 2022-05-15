@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+<<<<<<< HEAD
 import { Amplify } from 'aws-amplify';
 import { AsyncStorage } from '@aws-amplify/core';
 export default function DetailsScreen({ route, navigation }) {
+=======
+
+import { createSentFile } from './src/graphql/mutations';
+
+export default function DetailsScreen({ navigation }) {
+>>>>>>> refs/remotes/origin/back-end
   const [receivingSystemId, setReceivingSystemId] = React.useState(''); 
   let localUserId = AsyncStorage.getItem('localUID');
   let validId = false;
