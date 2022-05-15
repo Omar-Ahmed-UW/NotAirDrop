@@ -1,8 +1,7 @@
 # NotAirDrop
 
 ## Inspiration
-Based on the hackathon’s themes, we decicded to make a web application that also works on mobile devices because we were inspired by the problems of sharing files, photos, between friends, and other people. Oftentimes we are limited by upload size, and the time it takes to transfer files 
-
+Based on the hackathon’s themes, we decicded to make a web application that also works on mobile devices because we were inspired by the problems of sharing files, photos, between friends, and other people. Oftentimes we are limited by upload size, and the time it takes to transfer files because of this issue we decided to create our own application that allows us to send files without needing the same wifi conneciton through AWS servers.
 ## What it does
 
 ## How we built it
