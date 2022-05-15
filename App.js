@@ -30,13 +30,13 @@ import * as mutations from './src/graphql/mutations';
 
 import {useEffect} from 'react';
 
+let debug = false;
 export default function App() {
 
   // only runs on first launch
   useEffect(() => {
   // checks for a localUID
   const fetchUID = async () => {
-    const debug = false;
     console.log('Debugging: ' + debug);
     if(!AsyncStorage.getItem('localUID') || debug) {
       setUID();
@@ -73,7 +73,6 @@ export default function App() {
   const allUIDS = API.graphql({ query: queries.listUIDS });
   console.log(allUIDS);
 }, [])
-
 
   return (
     <NavigationContainer>

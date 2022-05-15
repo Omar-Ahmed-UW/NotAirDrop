@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 
+import { createSentFile } from './src/graphql/mutations';
+
 export default function DetailsScreen({ navigation }) {
   const [receivingSystemId, setReceivingSystemId] = React.useState(''); 
   let systemId = 1234;
