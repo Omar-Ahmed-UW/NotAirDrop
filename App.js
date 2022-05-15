@@ -1,10 +1,10 @@
-// import * as React from 'react';
-// import { StatusBar } from 'expo-status-bar';
+import * as React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import * as ImagePicker from 'expo-image-picker';
-// import * as DocumentPicker from 'expo-document-picker';
+import * as ImagePicker from 'expo-image-picker';
+import * as DocumentPicker from 'expo-document-picker';
 
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
@@ -23,10 +23,10 @@ Amplify.configure(awsconfig);
 import { API, graphqlOperation } from 'aws-amplify';
 
 import { createUIDS, updateUIDS, deleteUIDS } from './src/graphql/mutations';
-// import { listUIDS } from './src/graphql/queries';
+import { listUIDS } from './src/graphql/queries';
 
 import * as queries from './src/graphql/queries';
-// import * as mutations from './src/graphql/mutations';
+import * as mutations from './src/graphql/mutations';
 
 export default function App() {
 
@@ -122,4 +122,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
