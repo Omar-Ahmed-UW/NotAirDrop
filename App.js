@@ -31,7 +31,7 @@ export default function App() {
         eq: AsyncStorage.getItem('localUID')
       }
     }  
-    const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }});
+    const validUID = API.graphql({ query: queries.getUIDS, variables: { filter: filter }});
     console.log("found: " + validUID);
     if(!validUID) return;
     // if UID does not exist create entry 
@@ -39,11 +39,11 @@ export default function App() {
     const UIDDetails = {
       uid: AsyncStorage.getItem('localUID')
     };
-    const result = await API.graphql(graphqlOperation(mutations.createUIDS, { input: UIDDetails }));
+    const result = API.graphql(graphqlOperation(mutations.createUIDS, { input: UIDDetails }));
   } 
   const setUID = async() => {
     try {
-      await AsyncStorage.setItem('localUID', Math.random().toString(36).slice(2, 6));
+      AsyncStorage.setItem('localUID', Math.random().toString(36).slice(2, 6));
       console.log("new UID: " + AsyncStorage.getItem('localUID'));
     } catch (err) {
       alert(err)
