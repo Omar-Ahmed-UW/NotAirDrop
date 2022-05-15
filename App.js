@@ -28,8 +28,6 @@ import { createUIDS, updateUIDS, deleteUIDS } from './src/graphql/mutations';
 import * as queries from './src/graphql/queries';
 // import * as mutations from './src/graphql/mutations';
 
-import React, {useEffect} from 'react';
-
 export default function App() {
 
   // only runs on first launch
