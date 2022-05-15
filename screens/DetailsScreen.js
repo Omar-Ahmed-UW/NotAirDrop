@@ -31,3 +31,18 @@ export default function DetailsScreen({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  systemId: {
+    fontSize: 20,
+    color: '#484a49',
+    bottom: -100, /*Hardcode for now*/
+  },
+  inputSystemId: {
+    borderWidth: 1,
+    borderColor: '#484a49',
+    borderRadius: 5,
+    width: 200,
+    margin: 10,
+  },
+});

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import * as DocumentPicker from 'expo-document-picker';
 
 export default function FileUploadScreen({ route, navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
@@ -62,3 +64,45 @@ export default function FileUploadScreen({ route, navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  systemId: {
+    fontSize: 20,
+    color: '#484a49',
+    bottom: -100, /*Hardcode for now*/
+  },
+  inputSystemId: {
+    borderWidth: 1,
+    borderColor: '#484a49',
+    borderRadius: 5,
+    width: 200,
+    margin: 10,
+  },
+  instructions: {
+    color: '#888',
+    fontSize: 18,
+    marginHorizontal: 15,
+    marginBottom: 10,
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 20,
+    borderRadius: 5,
+    margin: 10,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#fff',
+  },
+  thumbnail: {
+    width: 300,
+    height: 300,
+    resizeMode: 'contain',
+  },
+});

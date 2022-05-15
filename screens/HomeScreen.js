@@ -12,3 +12,11 @@ export default function HomeScreen({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  systemId: {
+    fontSize: 20,
+    color: '#484a49',
+    bottom: -100, /*Hardcode for now*/
+  },
+});
