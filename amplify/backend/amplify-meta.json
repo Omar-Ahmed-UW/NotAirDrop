@@ -1,0 +1,104 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notairdrop-staging-53520-authRole",
+      "UnauthRoleArn": "arn:aws:iam::608399046986:role/amplify-notairdrop-staging-53520-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::608399046986:role/amplify-notairdrop-staging-53520-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-notairdrop-staging-53520-deployment",
+      "UnauthRoleName": "amplify-notairdrop-staging-53520-unauthRole",
+      "StackName": "amplify-notairdrop-staging-53520",
+      "StackId": "arn:aws:cloudformation:us-west-2:608399046986:stack/amplify-notairdrop-staging-53520/a5467680-d347-11ec-ab08-0235d00e2fcb",
+      "AmplifyAppId": "d2l6xtxmlqmml3"
+    }
+  },
+  "api": {
+    "NotAirDrop": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "xkkgydrpofhdzm5aiemrgp62km",
+        "GraphQLAPIEndpointOutput": "https://rskvmpocyrh4dpisfj7cwtqona.appsync-api.us-west-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-rn64rdbshvhxxor3pt2qo7h23q"
+      },
+      "lastPushTimeStamp": "2022-05-15T08:28:54.782Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notairdrop-staging-53520-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiNotAirDrop"
+      }
+    }
+  },
+  "auth": {
+    "notairdropcb99a260": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notairdrop-staging-53520-deployment/amplify-cfn-templates/auth/notairdropcb99a260-cloudformation-template.json",
+        "logicalId": "authnotairdropcb99a260"
+      },
+      "lastPushTimeStamp": "2022-05-15T08:28:54.907Z",
+      "output": {
+        "UserPoolId": "us-west-2_6THq6EH4u",
+        "AppClientIDWeb": "58btiiu4ktn91oq023lg1b4u5g",
+        "AppClientID": "7cfeilouv60nlplo8g2ojjlaqa",
+        "IdentityPoolId": "us-west-2:e47d55a6-7a3b-4aac-9d25-3bce5536db3c",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:608399046986:userpool/us-west-2_6THq6EH4u",
+        "IdentityPoolName": "notairdropcb99a260_identitypool_cb99a260__staging",
+        "UserPoolName": "notairdropcb99a260_userpool_cb99a260"
+      },
+      "lastPushDirHash": "3AVgr8oA+MVg/z/QJDGFcBFtmW0="
+    }
+  },
+  "storage": {
+    "s3": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2022-05-15T08:28:54.907Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notairdrop-staging-53520-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storages3"
+      },
+      "output": {
+        "BucketName": "notairdropfc8203a2c29b4546a28228ca013e2a5953520-staging",
+        "Region": "us-west-2"
+      },
+      "lastPushDirHash": "y2dKluDYfqI++9brpPa9dG2xiic="
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "NotAirDrop",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-05-14T06:10:06.723Z"
+}

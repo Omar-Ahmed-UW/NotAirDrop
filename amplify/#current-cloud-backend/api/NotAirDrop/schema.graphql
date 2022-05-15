@@ -1,0 +1,5 @@
+type UIDS @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  uid: String!
+}
+ 
