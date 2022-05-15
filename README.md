@@ -3,7 +3,7 @@
 ## Inspiration
 Based on the hackathon’s themes, we decicded to make a web application that also works on mobile devices because we were inspired by the problems of sharing files, photos, between friends, and other people. Oftentimes we are limited by upload size, and the time it takes to transfer files because of this issue we decided to create our own application that allows us to send files without needing the same wifi conneciton through AWS servers.
 ## What it does
-
+This is a File sharing application built with the React Native JS framework. When the application is first started up, a one time 4 digit alphanumerica code is generated to identify your device. You select file from your local device and input the device ID you are sending the file to. ID's are stored in AWS Amplify and all ID's are verified to make sure they are valid. Files are transfered through an AWS S3 bucket.
 ## How we built it
 We stared off with making a repo on github to store our work in and split it into 2 branches front and back end. Front end focused on the UI on react native and generating a platfrom for the back end to link with. Backend focused on creating unique UserID's for local machines as well as focusing on AWS servers using amplify to transfer and store files to the S3 Bucket. Back end used the bucket to send files to and from users depneding on 3 things FromUserID, URL, ToUserID with this information the bucket allows us to send files to the ToUserId from them to recive when they search for files sent to them.
 ## Challenges we ran into
