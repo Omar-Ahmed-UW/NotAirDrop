@@ -9,7 +9,10 @@ Amplify.configure(awsconfig);
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { createUIDS, updateUIDS, deleteUIDS } from './src/graphql/mutations';
-import { listUIDS } from './graphql/queries';
+import { listUIDS } from './src/graphql/queries';
+
+// import * as queries from './src/graphql/queries';
+// import * as mutations from './src/graphql/mutations';
 
 import React, {useEffect} from 'react';
 
@@ -19,29 +22,45 @@ export default function App() {
   useEffect(() => {
   // checks for a localUID
   const fetchUID = async () => {
-    if(!AsyncStorage.getItem('localUID')) {
+    const debug = true;
+    console.log('Debugging: ' + debug);
+    if(!AsyncStorage.getItem('localUID') || debug) {
       setUID();
     }
     // query UID from database
-    const validUIDS = await DataStore.query(UIDS, c => c.uid("eq", AsyncStorage.getItem('localUID')));
-    console.log(validUIDS);
-    if(!userID) return;
+    let filter = {
+      uid: {
+        eq: AsyncStorage.getItem('localUID')
+      }
+    }  
+    // const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }});
+    // console.log("found: " + validUID);
+    // if(!validUID) return;
     // if UID does not exist create entry 
-    await DataStore.save(
-      new UIDS({
-        uid: AsyncStorage.getItem('localUID')
-      })
-    );
+    console.log("Adding entry: " + AsyncStorage.getItem('localUID'));
+    (async () => {
+      const result = await client.mutate({
+        mutation: gql(createUIDS),
+        variables: {
+          input: {
+            uid: AsyncStorage.getItem('localUID')
+          }
+        }
+      });
+      console.log(result.data.createUID);
+    })();
   } 
   const setUID = async() => {
     try {
-      await AsyncStorage.setItem("localUID", Math.random().toString(36).slice(4));
+      await AsyncStorage.setItem('localUID', Math.random().toString(36).slice(2, 6));
+      console.log("new UID: " + AsyncStorage.getItem('localUID'));
     } catch (err) {
       alert(err)
     }
   }
   console.log("Mounted");
   fetchUID();
+  console.log("UID Fetched");
   console.log(AsyncStorage.getItem('localUID'));
 }, [])
 
