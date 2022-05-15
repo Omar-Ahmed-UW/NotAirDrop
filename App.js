@@ -71,7 +71,7 @@ export default function App() {
   console.log("UID Fetched");
   console.log(AsyncStorage.getItem('localUID'));
   const allUIDS = API.graphql({ query: queries.listUIDS });
-  console.log(allUIDS);
+  //console.log(allUIDS);
 }, [])
 
 
