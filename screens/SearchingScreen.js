@@ -1,9 +1,47 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 
+import { AsyncStorage } from '@aws-amplify/core';
+
+
 export default function SearchingScreen({ navigation }) {
-  let fileFound = true;
-  
+  let fileFound = false;
+  let localUserId = AsyncStorage.getItem('localUID');
+  let uriReceived = '';
+
+  /*
+  function checkStorageForFile(){
+    let filter = {
+      toUID: {
+        eq: AsyncStorage.getItem(localUserId)
+      }
+    }  
+    try {
+      const valid = await API.graphql({ query: queries.getSentFile, variables: { filter: filter }}) ;
+      console.log("found: " + valid);
+      fileFound = true;
+      // uriReceived = 
+    }
+    catch (err) {
+      // no matches  
+      console.log("no matches");
+    } 
+  }
+
+*/
+/*
+  while(fileFound == false) {
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        console.log("waiting");
+      }, 5000);
+      clearTimeout(timer);
+    }, []);
+  }
+
+*/
+
+
   if(fileFound) {
     navigation.navigate('Download')
   }
@@ -12,7 +50,7 @@ export default function SearchingScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={styles.titleText}>Searching for file</Text>
       <View style={styles.bottomView}>
-        <Text style={styles.textStyle}>System ID: 1234</Text>
+        <Text style={styles.textStyle}>System ID: {localUserId}</Text>
       </View>
     </View>
   );

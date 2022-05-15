@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+import { Amplify } from 'aws-amplify';
+import { AsyncStorage } from '@aws-amplify/core';
 
 export default function DownloadingScreen({ navigation }) {
   let fileName = "tempFile.txt"
+  let localUserId = AsyncStorage.getItem('localUID');
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={styles.titleText}>File Found:</Text>
@@ -21,7 +24,7 @@ export default function DownloadingScreen({ navigation }) {
       </View>
 
       <View style={styles.bottomView}>
-        <Text style={styles.textStyle}>System ID: 1234</Text>
+        <Text style={styles.textStyle}>System ID: {localUserId}</Text>
       </View>
     </View>
   );
