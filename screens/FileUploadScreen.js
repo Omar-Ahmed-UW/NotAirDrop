@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 
@@ -32,7 +32,7 @@ export default function FileUploadScreen({ route, navigation }) {
   if (singleFile !== null) {
     return (
       <View style={styles.container}>
-        <Image source={{ uri: singleFile.localUri }} style={styles.thumbnail} />
+        <Text>Hello</Text>
       </View>
     );
   }
@@ -41,16 +41,22 @@ export default function FileUploadScreen({ route, navigation }) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
+        <View style={styles.buttonAlign}>
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Home')}>
+            <Text style={styles.buttonText}>Send</Text>
+          </Pressable>
+          <Text style={styles.spacer}> </Text>
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Details')}>
+              <Text style={styles.buttonText}>Cancel</Text>
+          </Pressable>
+        </View>
       </View>
     );
   }
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Sending to: {receivingSystemId}</Text>
-      <Text style={styles.instructions}>
-        To share a photo from your phone with a friend, just press the button below!
-      </Text>
+      <Text style={styles.titleText}>Sending to: {receivingSystemId}</Text>
 
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Select Photo</Text>
@@ -60,7 +66,9 @@ export default function FileUploadScreen({ route, navigation }) {
       </TouchableOpacity>
       
 
-      <Text style={styles.systemId}>System ID: 1234</Text>
+      <View style={styles.bottomView}>
+          <Text style={styles.textStyle}>System ID: 1234</Text>
+      </View>
     </View>
   );
 }
@@ -71,6 +79,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  titleText: {
+    fontSize: 20,
+    color: '#6e6d6d',
+    paddingBottom: 30,
   },
   systemId: {
     fontSize: 20,
@@ -104,5 +117,44 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
     resizeMode: 'contain',
+  },
+  bottomView: {
+    fontSize: 20,
+    color: '#a19f9f',
+    width: '100%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
+    bottom: 0, //Here is the trick
+  },
+  textStyle: {
+    fontSize: 20,
+    color: '#8c8b8b',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#62a193',
+    marginTop: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  buttonAlign: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  spacer: {
+    width: 30,
   },
 });

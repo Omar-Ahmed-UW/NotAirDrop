@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 
 export default function DetailsScreen({ navigation }) {
   const [receivingSystemId, setReceivingSystemId] = React.useState(''); 
+  let systemId = 1234;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       {/*
@@ -17,32 +18,70 @@ export default function DetailsScreen({ navigation }) {
         onPress={() => navigation.popToTop()}
       />
       */}
-      <Text>Send To:</Text>
+      <Text style={styles.titleText}>Send To:</Text>
       <TextInput 
         keyboardType='numeric'
         maxLength={4}
         style={styles.inputSystemId}
-        placeholder="System ID: eg.`1234`"  
+        placeholder="Recipient ID:  eg.`0000`" 
+        placeholderTextColor="#6e6d6d" 
+        mode="flat"
         onChangeText={text => setReceivingSystemId(text)}
       />
-      <Button onPress={() => navigation.navigate('FileUpload', {receivingSystemId: receivingSystemId})} title="Submit" />
-
-      <Text style={styles.systemId}>System ID: 1234</Text>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('FileUpload', {receivingSystemId: receivingSystemId})}>
+          <Text style={styles.buttonText}>Submit</Text>
+      </Pressable>
+      
+      <View style={styles.bottomView}>
+          <Text style={styles.textStyle}>System ID: {systemId}</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  systemId: {
+  titleText: {
     fontSize: 20,
-    color: '#484a49',
-    bottom: -100, /*Hardcode for now*/
+    color: '#6e6d6d',
   },
   inputSystemId: {
-    borderWidth: 1,
-    borderColor: '#484a49',
+    borderWidth: 0,
     borderRadius: 5,
+    backgroundColor: '#c7c7c7',
     width: 200,
     margin: 10,
+    textAlign: 'center',
+    padding: 10,
+  },
+  bottomView: {
+    fontSize: 20,
+    color: '#a19f9f',
+    width: '100%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
+    bottom: 0, //Here is the trick
+  },
+  textStyle: {
+    fontSize: 20,
+    color: '#8c8b8b',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#62a193',
+    marginTop: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });
