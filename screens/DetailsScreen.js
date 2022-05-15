@@ -4,6 +4,40 @@ import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pre
 export default function DetailsScreen({ navigation }) {
   const [receivingSystemId, setReceivingSystemId] = React.useState(''); 
   let systemId = 1234;
+  let validId = false;
+
+  state = {
+    textValue: 'Send To:',
+  }
+  changeTitle = () => {
+    this.setState({
+      textValue: 'System ID Not Found',
+    })
+  }
+
+  if(receivingSystemId == ''){
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={styles.titleText}>{this.state.textValue}</Text>
+        <TextInput 
+          keyboardType='numeric'
+          maxLength={4}
+          style={styles.inputSystemId}
+          placeholder="Recipient ID:  eg.`0000`" 
+          placeholderTextColor="#6e6d6d" 
+          mode="flat"
+          onChangeText={text => setReceivingSystemId(text)}
+        />
+          <Pressable style={styles.button} onPress={() => this.changeTitle}>
+              <Text style={styles.buttonText}>Submit</Text>
+          </Pressable>
+        
+        <View style={styles.bottomView}>
+            <Text style={styles.textStyle}>System ID: {systemId}</Text>
+        </View>
+      </View>
+    );
+  }
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       {/*
@@ -18,7 +52,7 @@ export default function DetailsScreen({ navigation }) {
         onPress={() => navigation.popToTop()}
       />
       */}
-      <Text style={styles.titleText}>Send To:</Text>
+      <Text style={styles.titleText}>{this.state.textValue}</Text>
       <TextInput 
         keyboardType='numeric'
         maxLength={4}
@@ -28,9 +62,9 @@ export default function DetailsScreen({ navigation }) {
         mode="flat"
         onChangeText={text => setReceivingSystemId(text)}
       />
-      <Pressable style={styles.button} onPress={() => navigation.navigate('FileUpload', {receivingSystemId: receivingSystemId})}>
-          <Text style={styles.buttonText}>Submit</Text>
-      </Pressable>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('FileUpload', {receivingSystemId: receivingSystemId})}>
+            <Text style={styles.buttonText}>Submit</Text>
+        </Pressable>
       
       <View style={styles.bottomView}>
           <Text style={styles.textStyle}>System ID: {systemId}</Text>
@@ -57,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#a19f9f',
     width: '100%',
-    height: 40,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute', //Here is the trick

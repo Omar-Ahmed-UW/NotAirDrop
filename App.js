@@ -9,6 +9,8 @@ import * as DocumentPicker from 'expo-document-picker';
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import FileUploadScreen from './screens/FileUploadScreen';
+import SearchingScreen from './screens/SearchingScreen';
+import DownloadScreen from './screens/DownloadScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +43,16 @@ export default function App() {
           component={FileUploadScreen}
           options={{title: "File Upload"}}
            />  
+          <Stack.Screen
+            name="Searching"
+            component={SearchingScreen}
+            options={{title: "Searching"}}
+          />
+          <Stack.Screen
+            name="Download"
+            component={DownloadScreen}
+            options={{title: "Download"}}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

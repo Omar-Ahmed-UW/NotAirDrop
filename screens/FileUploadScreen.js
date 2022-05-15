@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#a19f9f',
     width: '100%',
-    height: 40,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute', //Here is the trick

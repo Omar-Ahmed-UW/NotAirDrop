@@ -1,27 +1,38 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 
-
-export default function HomeScreen({ navigation }) {
+export default function DownloadingScreen({ navigation }) {
+  let fileName = "tempFile.txt"
   return (
-    /*<Image source={require('./my-icon.png')} /> */
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <View>
-        <Pressable style={styles.button} onPress={() => navigation.navigate('Details')}>
-          <Text style={styles.buttonText}>Send File</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => navigation.navigate('Searching')}>
-          <Text style={styles.buttonText}>Download File</Text>
-        </Pressable>
+      <Text style={styles.titleText}>File Found:</Text>
+      <Text style={styles.titleText}>File Name: {fileName}</Text>
+
+      <View style={styles.container}>
+        <View style={styles.buttonAlign}>
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Home')}>
+            <Text style={styles.buttonText}>Accept</Text>
+          </Pressable>
+          <Text style={styles.spacer}> </Text>
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Home')}>
+              <Text style={styles.buttonText}>Decline</Text>
+          </Pressable>
+        </View>
       </View>
+
       <View style={styles.bottomView}>
-          <Text style={styles.textStyle}>System ID: 1234</Text>
+        <Text style={styles.textStyle}>System ID: 1234</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  titleText: {
+    fontSize: 20,
+    color: '#6e6d6d',
+    paddingBottom: 30,
+  },
   bottomView: {
     fontSize: 20,
     color: '#a19f9f',
@@ -52,5 +63,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+  buttonAlign: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  spacer: {
+    width: 30,
   },
 });
