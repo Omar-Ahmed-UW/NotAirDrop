@@ -6,19 +6,23 @@ export default function DetailsScreen({ navigation }) {
   let systemId = 1234;
   let validId = false;
 
+  /*
   state = {
     textValue: 'Send To:',
   }
   changeTitle = () => {
+    systemId = 1111;
+  
     this.setState({
       textValue: 'System ID Not Found',
+      
     })
-  }
+    */
 
   if(receivingSystemId == ''){
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.titleText}>{this.state.textValue}</Text>
+        <Text style={styles.titleText}>Send To:</Text>
         <TextInput 
           keyboardType='numeric'
           maxLength={4}
@@ -28,7 +32,7 @@ export default function DetailsScreen({ navigation }) {
           mode="flat"
           onChangeText={text => setReceivingSystemId(text)}
         />
-          <Pressable style={styles.button} onPress={() => this.changeTitle}>
+          <Pressable style={styles.button} onPress={() => systemId = 1111}>
               <Text style={styles.buttonText}>Submit</Text>
           </Pressable>
         
@@ -52,7 +56,7 @@ export default function DetailsScreen({ navigation }) {
         onPress={() => navigation.popToTop()}
       />
       */}
-      <Text style={styles.titleText}>{this.state.textValue}</Text>
+      <Text style={styles.titleText}>Send To:</Text>
       <TextInput 
         keyboardType='numeric'
         maxLength={4}
