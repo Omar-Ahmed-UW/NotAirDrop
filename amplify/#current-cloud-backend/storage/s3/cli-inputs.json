@@ -1,0 +1,18 @@
+{
+  "resourceName": "s3",
+  "policyUUID": "a52ec2a1",
+  "bucketName": "notairdropfc8203a2c29b4546a28228ca013e2a59",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

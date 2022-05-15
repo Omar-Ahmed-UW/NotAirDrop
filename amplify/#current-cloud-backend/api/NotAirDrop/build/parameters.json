@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "NotAirDrop",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-notairdrop-staging-53520-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/722800600a6fbd76214471d4a226763b1478da75"
+}

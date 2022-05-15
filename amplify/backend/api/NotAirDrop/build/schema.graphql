@@ -1,0 +1,158 @@
+
+type UIDS @aws_iam @aws_api_key {
+  id: ID!
+  uid: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUIDSConnection @aws_api_key @aws_iam {
+  items: [UIDS]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUIDSFilterInput {
+  id: ModelIDInput
+  uid: ModelStringInput
+  and: [ModelUIDSFilterInput]
+  or: [ModelUIDSFilterInput]
+  not: ModelUIDSFilterInput
+}
+
+type Query {
+  getUIDS(id: ID!): UIDS @aws_api_key @aws_iam
+  listUIDS(filter: ModelUIDSFilterInput, limit: Int, nextToken: String): ModelUIDSConnection @aws_api_key @aws_iam
+  syncUIDS(filter: ModelUIDSFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUIDSConnection @aws_api_key @aws_iam
+}
+
+input ModelUIDSConditionInput {
+  uid: ModelStringInput
+  and: [ModelUIDSConditionInput]
+  or: [ModelUIDSConditionInput]
+  not: ModelUIDSConditionInput
+}
+
+input CreateUIDSInput {
+  id: ID
+  uid: String!
+  _version: Int
+}
+
+input UpdateUIDSInput {
+  id: ID!
+  uid: String
+  _version: Int
+}
+
+input DeleteUIDSInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createUIDS(input: CreateUIDSInput!, condition: ModelUIDSConditionInput): UIDS @aws_api_key @aws_iam
+  updateUIDS(input: UpdateUIDSInput!, condition: ModelUIDSConditionInput): UIDS @aws_api_key @aws_iam
+  deleteUIDS(input: DeleteUIDSInput!, condition: ModelUIDSConditionInput): UIDS @aws_api_key @aws_iam
+}
+
+type Subscription {
+  onCreateUIDS: UIDS @aws_subscribe(mutations: ["createUIDS"]) @aws_api_key @aws_iam
+  onUpdateUIDS: UIDS @aws_subscribe(mutations: ["updateUIDS"]) @aws_api_key @aws_iam
+  onDeleteUIDS: UIDS @aws_subscribe(mutations: ["deleteUIDS"]) @aws_api_key @aws_iam
+}
+
