@@ -36,7 +36,7 @@ export default function App() {
   useEffect(() => {
   // checks for a localUID
   const fetchUID = async () => {
-    const debug = true;
+    const debug = false;
     console.log('Debugging: ' + debug);
     if(!AsyncStorage.getItem('localUID') || debug) {
       setUID();
