@@ -9,6 +9,9 @@ Amplify.configure(awsconfig);
 
 import { API, graphqlOperation } from 'aws-amplify';
 
+import { createUIDS, updateUIDS, deleteUIDS } from './src/graphql/mutations';
+import { listUIDS } from './src/graphql/queries';
+
 import * as queries from './src/graphql/queries';
 import * as mutations from './src/graphql/mutations';
 
@@ -31,15 +34,16 @@ export default function App() {
         eq: AsyncStorage.getItem('localUID')
       }
     }  
-    const validUID = API.graphql({ query: queries.getUIDS, variables: { filter: filter }});
-    console.log("found: " + validUID);
-    if(!validUID) return;
+    try {
+      const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }}) ;
+      console.log("found: " + validUID);
+    }
+    catch (err) {
     // if UID does not exist create entry 
-    console.log("Adding entry: " + AsyncStorage.getItem('localUID'));
-    const UIDDetails = {
-      uid: AsyncStorage.getItem('localUID')
-    };
-    const result = API.graphql(graphqlOperation(mutations.createUIDS, { input: UIDDetails }));
+      console.log("add: " + AsyncStorage.getItem('localUID'));  
+      const newUID = { uid: AsyncStorage.getItem('localUID') };
+      API.graphql(graphqlOperation(createUIDS, {input: newUID}));
+    }
   } 
   const setUID = async() => {
     try {
