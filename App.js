@@ -28,7 +28,7 @@ import { listUIDS } from './src/graphql/queries';
 import * as queries from './src/graphql/queries';
 import * as mutations from './src/graphql/mutations';
 
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 
 export default function App() {
 
@@ -73,6 +73,7 @@ export default function App() {
   const allUIDS = API.graphql({ query: queries.listUIDS });
   console.log(allUIDS);
 }, [])
+
 
   return (
     <NavigationContainer>

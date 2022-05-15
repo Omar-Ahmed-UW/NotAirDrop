@@ -1,13 +1,19 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "notairdrop",
+    "apiName": "NotAirDrop",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/home/hayden/Repos/NotAirDrop/amplify/backend/api/notairdrop/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-c94f101f-3420-407e-bc5f-e9dda73b32cd/amplify/backend/api/NotAirDrop/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
+      "keyDescription": "api key description",
+      "expirationTime": 30
     },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ],
     "conflictResolution": {
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"

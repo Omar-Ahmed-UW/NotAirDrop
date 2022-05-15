@@ -50,6 +50,7 @@ export default function FileUploadScreen({ route, navigation }) {
               <Text style={styles.buttonText}>Cancel</Text>
           </Pressable>
         </View>
+        {console.log(selectedImage.uri)}
       </View>
     );
   }
