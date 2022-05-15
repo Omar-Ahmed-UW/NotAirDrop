@@ -8,11 +8,9 @@ import awsconfig from './src/aws-exports';
 Amplify.configure(awsconfig);
 
 import { API, graphqlOperation } from 'aws-amplify';
-import { createUIDS, updateUIDS, deleteUIDS } from './src/graphql/mutations';
-import { listUIDS } from './src/graphql/queries';
 
-// import * as queries from './src/graphql/queries';
-// import * as mutations from './src/graphql/mutations';
+import * as queries from './src/graphql/queries';
+import * as mutations from './src/graphql/mutations';
 
 import React, {useEffect} from 'react';
 
@@ -33,22 +31,15 @@ export default function App() {
         eq: AsyncStorage.getItem('localUID')
       }
     }  
-    // const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }});
-    // console.log("found: " + validUID);
-    // if(!validUID) return;
+    const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }});
+    console.log("found: " + validUID);
+    if(!validUID) return;
     // if UID does not exist create entry 
     console.log("Adding entry: " + AsyncStorage.getItem('localUID'));
-    (async () => {
-      const result = await client.mutate({
-        mutation: gql(createUIDS),
-        variables: {
-          input: {
-            uid: AsyncStorage.getItem('localUID')
-          }
-        }
-      });
-      console.log(result.data.createUID);
-    })();
+    const UIDDetails = {
+      uid: AsyncStorage.getItem('localUID')
+    };
+    const result = await API.graphql(graphqlOperation(mutations.createUIDS, { input: UIDDetails }));
   } 
   const setUID = async() => {
     try {
@@ -62,6 +53,8 @@ export default function App() {
   fetchUID();
   console.log("UID Fetched");
   console.log(AsyncStorage.getItem('localUID'));
+  const allUIDS = API.graphql({ query: queries.listUIDS });
+  console.log(allUIDS);
 }, [])
 
   return (
