@@ -4,8 +4,9 @@ import { schema } from './schema';
 
 
 
-const { UIDS } = initSchema(schema);
+const { SendURL, UIDS } = initSchema(schema);
 
 export {
+  SendURL,
   UIDS
 };

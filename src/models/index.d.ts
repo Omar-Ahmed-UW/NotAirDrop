@@ -4,8 +4,23 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type SendURLMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type UIDSMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class SendURL {
+  readonly id: string;
+  readonly fromUID: string;
+  readonly toUID: string;
+  readonly fileURL: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<SendURL, SendURLMetaData>);
+  static copyOf(source: SendURL, mutator: (draft: MutableModel<SendURL, SendURLMetaData>) => MutableModel<SendURL, SendURLMetaData> | void): SendURL;
 }
 
 export declare class UIDS {

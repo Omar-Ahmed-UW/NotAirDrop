@@ -28,13 +28,16 @@ import { listUIDS } from './src/graphql/queries';
 import * as queries from './src/graphql/queries';
 import * as mutations from './src/graphql/mutations';
 
+
+import {useEffect} from 'react';
+
 export default function App() {
 
   // only runs on first launch
   useEffect(() => {
   // checks for a localUID
   const fetchUID = async () => {
-    const debug = true;
+    const debug = false;
     console.log('Debugging: ' + debug);
     if(!AsyncStorage.getItem('localUID') || debug) {
       setUID();
@@ -46,7 +49,7 @@ export default function App() {
       }
     }  
     try {
-      const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }}) ;
+      const validUID = await API.graphql({ query: queries.listUIDS, variables: { filter: filter }}) ;
       console.log("found: " + validUID);
     }
     catch (err) {
@@ -71,6 +74,7 @@ export default function App() {
   const allUIDS = API.graphql({ query: queries.listUIDS });
   console.log(allUIDS);
 }, [])
+
 
   return (
     <NavigationContainer>
