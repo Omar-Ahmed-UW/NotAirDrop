@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
+import { Amplify } from 'aws-amplify';
+import { AsyncStorage } from '@aws-amplify/core';
 
 export default function FileUploadScreen({ route, navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
   let [singleFile, setSingleFile] = React.useState(null);
   const { receivingSystemId } = route.params;
+  const localUserId = AsyncStorage.getItem('localUID');
 
   const openImagePickerAsync = async () => {
     // No permissions request is necessary for launching the image library
@@ -68,7 +71,7 @@ export default function FileUploadScreen({ route, navigation }) {
       
 
       <View style={styles.bottomView}>
-          <Text style={styles.textStyle}>System ID: 1234</Text>
+          <Text style={styles.textStyle}>System ID: {localUserId}</Text>
       </View>
     </View>
   );
