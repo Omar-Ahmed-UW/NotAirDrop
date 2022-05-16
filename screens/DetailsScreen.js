@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+import { Amplify } from 'aws-amplify';
+import { AsyncStorage } from '@aws-amplify/core';
 
 export default function DetailsScreen({ navigation }) {
   const [receivingSystemId, setReceivingSystemId] = React.useState(''); 
   let systemId = 1234;
   let validId = false;
+  const localUserId = AsyncStorage.getItem('localUID');
 
   /*
   state = {
@@ -37,7 +40,7 @@ export default function DetailsScreen({ navigation }) {
           </Pressable>
         
         <View style={styles.bottomView}>
-            <Text style={styles.textStyle}>System ID: {systemId}</Text>
+            <Text style={styles.textStyle}>System ID: {localUserId}</Text>
         </View>
       </View>
     );
@@ -71,7 +74,7 @@ export default function DetailsScreen({ navigation }) {
         </Pressable>
       
       <View style={styles.bottomView}>
-          <Text style={styles.textStyle}>System ID: {systemId}</Text>
+          <Text style={styles.textStyle}>System ID: {localUserId}</Text>
       </View>
     </View>
   );

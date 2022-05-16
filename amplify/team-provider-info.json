@@ -1,15 +1,20 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-notairdrop-dev-195029-authRole",
-      "UnauthRoleArn": "arn:aws:iam::608399046986:role/amplify-notairdrop-dev-195029-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::608399046986:role/amplify-notairdrop-dev-195029-authRole",
-      "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-notairdrop-dev-195029-deployment",
-      "UnauthRoleName": "amplify-notairdrop-dev-195029-unauthRole",
-      "StackName": "amplify-notairdrop-dev-195029",
-      "StackId": "arn:aws:cloudformation:us-west-1:608399046986:stack/amplify-notairdrop-dev-195029/a042dc30-d330-11ec-bf87-0695608b534d",
-      "AmplifyAppId": "d9fyeumca7yn4"
+      "AuthRoleName": "amplify-notairdrop-staging-53520-authRole",
+      "UnauthRoleArn": "arn:aws:iam::608399046986:role/amplify-notairdrop-staging-53520-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::608399046986:role/amplify-notairdrop-staging-53520-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-notairdrop-staging-53520-deployment",
+      "UnauthRoleName": "amplify-notairdrop-staging-53520-unauthRole",
+      "StackName": "amplify-notairdrop-staging-53520",
+      "StackId": "arn:aws:cloudformation:us-west-2:608399046986:stack/amplify-notairdrop-staging-53520/a5467680-d347-11ec-ab08-0235d00e2fcb",
+      "AmplifyAppId": "d2l6xtxmlqmml3"
+    },
+    "categories": {
+      "auth": {
+        "notairdropcb99a260": {}
+      }
     }
   }
 }

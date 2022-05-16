@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Image, StyleSheet, Button, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+import { Amplify } from 'aws-amplify';
+import { AsyncStorage } from '@aws-amplify/core';
 
 export default function SearchingScreen({ navigation }) {
-  let fileFound = true;
+  let fileFound = false;
+  const localUserId = AsyncStorage.getItem('localUID');
   
   if(fileFound) {
     navigation.navigate('Download')
@@ -12,7 +15,7 @@ export default function SearchingScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={styles.titleText}>Searching for file</Text>
       <View style={styles.bottomView}>
-        <Text style={styles.textStyle}>System ID: 1234</Text>
+        <Text style={styles.textStyle}>System ID: {localUserId}</Text>
       </View>
     </View>
   );
