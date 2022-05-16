@@ -28,6 +28,7 @@ import { listUIDS } from './src/graphql/queries';
 import * as queries from './src/graphql/queries';
 import * as mutations from './src/graphql/mutations';
 
+
 import {useEffect} from 'react';
 
 export default function App() {
@@ -48,7 +49,7 @@ export default function App() {
       }
     }  
     try {
-      const validUID = await API.graphql({ query: queries.getUIDS, variables: { filter: filter }}) ;
+      const validUID = await API.graphql({ query: queries.listUIDS, variables: { filter: filter }}) ;
       console.log("found: " + validUID);
     }
     catch (err) {
