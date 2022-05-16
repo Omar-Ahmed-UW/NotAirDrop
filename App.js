@@ -29,6 +29,7 @@ import * as queries from './src/graphql/queries';
 import * as mutations from './src/graphql/mutations';
 
 
+
 import {useEffect} from 'react';
 
 export default function App() {
@@ -126,4 +127,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
