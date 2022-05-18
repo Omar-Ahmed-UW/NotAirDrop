@@ -14,3 +14,10 @@ We are proud of setting up the whole frontend and being able to connect it to ou
 Over the course of this project we have learned the most about react-native and front and back end development we started off with a limited understanding of javascript and finished with a stronger base. We also learned how to use AWS servers and databases to store and share files using unique users that are saved locally to the machine you are using.
 ## What's next for NotAirDrop
 Upgrading our service to be able to handle bigger files as well as videos to send
+
+## Contributors
+@akumar282
+@loganbates2002
+@haydenlauritzen
+@mohazahid
+@Omar Ahmed
